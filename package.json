@@ -1,5 +1,7 @@
 {
-  "name": "monaco-editor",
+  "name": "TecCode",
+  "description": "TecCode",
+  "author": "Enrique Rodriguez Vela",
   "private": true,
   "version": "0.0.0",
   "scripts": {
