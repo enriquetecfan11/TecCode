@@ -1,3 +1,4 @@
+/* Estilos generales */
 html, body, #app {
   margin: 0;
   padding: 0;
@@ -5,17 +6,11 @@ html, body, #app {
   background-color: #1e1e1e;
 }
 
-
 html {
   box-sizing: border-box;
 }
 
-iframe {
-  border: none;
-  height: 100%;
-  width: 100%;
-}
-
+/* Estilos para los editores y la vista previa en vivo */
 #app {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -23,27 +18,10 @@ iframe {
   width: 100vw;
 }
 
-.editor {
+.editor, .livepreview {
   position: relative;
+  background-color: black;
 }
-
-.monaco-editor{
-  height: 100%;
-  width: 100%;
-}
-
-
-textarea {
-  outline: none;
-  resize: none;
-  font-family: 'Cascadia Code';
-  font-size: 18px;
-  line-height: 1.5;
-  color: #fff;
-}
-
-
-/* Imagenes Lenguajes */
 
 .editor::after {
   content: '';
@@ -53,7 +31,6 @@ textarea {
   bottom: 16px;
   width: 48px;
   height: 48px;
-  z-index: 1;
 }
 
 #html::after {
@@ -68,40 +45,12 @@ textarea {
   background-image: url('assets/js.svg');
 }
 
-
-
-main {
-  display: flex;
-  align-items: stretch;
-  margin: 0;
-  padding: 0;
-}
-
-#app {
-  display: flex;
-  flex-grow: 1;
-}
-
-.editors {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  background-color: #1e1e1e;
-}
-
-.editor {
-  flex-grow: 1;
-  border: 2px solid white;
-}
-
-
-
+/* Estilos para el iframe */
 iframe {
-  flex-grow: 1;
   border: none;
-  width: 50%; /* Puedes ajustar este valor según tus necesidades */
 }
 
+/* Estilos para el encabezado */
 header {
   background-color: #333;
   color: #fff;
@@ -111,9 +60,11 @@ header {
 
 header h1 {
   font-size: 20px;
+  font-family: 'Courier New', Courier, monospace;
 }
-
-.livepreview{
-  margin: 20px;
-  border: #fff 2px solid;
+header a{
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration: none;
 }

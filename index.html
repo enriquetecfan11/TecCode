@@ -5,21 +5,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tec Code</title>
+  <!-- add favicon -->
+  <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+  <style>
+    .editor {
+      width: 900px;
+      height: 300px;
+    }
+    .livepreview {
+      width: 900px;
+      height: 900px;
+    }
+  </style>
 </head>
 
 <body>
   <header>
     <h1>TecCode made by Enrique Rodriguez Vela</h1>
+    <a href="https://github.com/enriquetecfan11/TecCode">Github Project</a>
   </header>
-  <main>
-    <div id="app">
-      <div class="editors">
-        <div class="editor" id="html" style="width: 900px; height: 300px;"></div>
-        <div class="editor" id="css" style="width: 900px; height: 300px;"></div>
-        <div class="editor" id="js" style="width: 900px; height: 300px;"></div>
-      </div>
-      <iframe class="livepreview" srcdoc="" style="width: 900px; height: 900px;"></iframe>
-    </div>
+  <main id="app">
+    <section class="editors">
+      <div class="editor" id="html"></div>
+      <div class="editor" id="css"></div>
+      <div class="editor" id="js"></div>
+    </section>
+    <iframe class="livepreview" srcdoc=""></iframe>
   </main>
   <script type="module" src="/main.js"></script>
 </body>

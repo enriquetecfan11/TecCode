@@ -1,13 +1,14 @@
 import './style.css'
-// import { encode, decode } from 'js-base64'
 import * as monaco from 'monaco-editor'
 import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
 import { emmetHTML } from 'emmet-monaco-es'
 
+// Función auxiliar para seleccionar elementos del DOM
 const $ = selector => document.querySelector(selector)
 
+// Configuración del entorno de Monaco
 window.MonacoEnvironment = {
   getWorker(_, label) {
     if (label === 'html') return new HtmlWorker()
@@ -16,83 +17,112 @@ window.MonacoEnvironment = {
   }
 }
 
-const $html = $('#html')
-const $css = $('#css')
-const $js = $('#js')
-
+// Estado inicial del editor
 const initialEditorState = {
   html: `
-      <html>
-      <head>
-        <title>Document</title>
-      </head>
-      <body>
-        <h1>Hello World</h1>
-      </body>
-      </html>
+    <!DOCTYPE html>
+    <html>
+    <body style="margin:0">
+      <canvas id="myCanvas" style="width:100%; height:100%"></canvas>
+    </body>
+    </html>
   `,
-  css: `* { background-color: white; }`,
-  js: `console.log('Hello World')`
+  css: `* { 
+    background-color: dark; 
+  }`,
+  js: `
+  // Obtener el canvas y establecer su tamaño
+var canvas = document.getElementById('myCanvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var ctx = canvas.getContext('2d');
+
+// Crear un array para almacenar las bolas
+var balls = [];
+
+// Crear 10 bolas con posiciones y velocidades aleatorias
+for(var i = 0; i < 25; i++) {
+    balls[i] = {
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        dx: (Math.random() - 0.5) * 10,
+        dy: (Math.random() - 0.5) * 10
+    };
 }
 
-const html = initialEditorState.html
-const css = initialEditorState.css
-const js = initialEditorState.js
-
-const CommonEditorSettings = {
-  minimap: {
-    enabled: true
-  },
-  lineNumbers: "on",  
-  theme: 'vs-dark',
-  fontFamily: 'Consolas',
-  fontSize: 18,
-  fontLigatures: true,
-  tabSize: 2,
-  wordWrap: 'on',
-  useTabStops: true,
-  tabCompletion: true
+function drawBall(ball) {
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, 10, 0, Math.PI*2);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
 }
 
-// Crear editores y actulizar editores
-const htmlEditor = monaco.editor.create($html, {
-  value: html,
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    for(var i = 0; i < balls.length; i++) {
+        var ball = balls[i];
+        drawBall(ball);
+        
+        if(ball.x + ball.dx > canvas.width-10 || ball.x + ball.dx < 10) {
+            ball.dx = -ball.dx;
+        }
+        if(ball.y + ball.dy > canvas.height-10 || ball.y + ball.dy < 10) {
+            ball.dy = -ball.dy;
+        }
+        
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+    }
+}
+
+setInterval(draw, 10);
+`
+}
+
+// Crear los editores de Monaco
+const htmlEditor = monaco.editor.create($('#html'), {
+  value: initialEditorState.html,
   language: 'html',
-  ...CommonEditorSettings
+  theme: 'vs-dark', 
+  automaticLayout: true,
+  autoIndent: true,
+  autoClosingBrackets: true,
 })
 
-const cssEditor = monaco.editor.create($css, {
-  value: css,
+const cssEditor = monaco.editor.create($('#css'), {
+  value: initialEditorState.css,
   language: 'css',
-  ...CommonEditorSettings
+
 })
 
-const jsEditor = monaco.editor.create($js, {
-  value: js,
+const jsEditor = monaco.editor.create($('#js'), {
+  value: initialEditorState.js,
   language: 'javascript',
-  ...CommonEditorSettings
 })
 
+// Actualizar la vista previa cuando cambia el contenido del editor
 htmlEditor.onDidChangeModelContent(update)
 cssEditor.onDidChangeModelContent(update)
 jsEditor.onDidChangeModelContent(update)
 
-// Agregar Emmet
-emmetHTML(monaco, ['html', 'css', 'js']);
+// Agregar soporte para Emmet
+emmetHTML(monaco);
 
-// Función para actualizar la vista previa
-const htmlPreview = createHtml({ html, css, js })
-$('iframe').setAttribute('srcdoc', htmlPreview)
+// Actualizar la vista previa inicial
+update()
 
 function update() {
-  const html = htmlEditor.getValue()
-  const css = cssEditor.getValue()
-  const js = jsEditor.getValue()
-  const htmlPreview = createHtml({ html, css, js })
-  $('iframe').setAttribute('srcdoc', htmlPreview)
+  const htmlPreview = createHtml({
+    html: htmlEditor.getValue(),
+    css: cssEditor.getValue(),
+    js: jsEditor.getValue()
+  })
+  
+ $('iframe').setAttribute('srcdoc', htmlPreview)
 }
 
-// Función para generar la vista previa
 function createHtml({ html, css, js }) {
   return `
     <!DOCTYPE html>
@@ -106,9 +136,10 @@ function createHtml({ html, css, js }) {
       </style>
     </head>
     <body>
-      <div id="app">${html}</div>
+      ${html}
       <script>${js}</script>
     </body>
     </html>
   `;
 }
+
