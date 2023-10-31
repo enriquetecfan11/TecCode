@@ -20,6 +20,7 @@ window.MonacoEnvironment = {
 // Estado inicial del editor
 const initialEditorState = {
   html: `
+    <!------ Replace this code and your own // Quita este codigo y progrma el tuyo------>
     <!DOCTYPE html>
     <html>
     <body style="margin:0">
@@ -27,10 +28,15 @@ const initialEditorState = {
     </body>
     </html>
   `,
-  css: `* { 
+  css: `
+  //Replace this code and your own // Quita este codigo y progrma el tuyo
+  * { 
     background-color: dark; 
   }`,
   js: `
+  //Replace this code and your own // Quita este codigo y progrma el tuyo
+  //-------------------------------------------------------------
+  
   // Obtener el canvas y establecer su tamaño
 var canvas = document.getElementById('myCanvas');
 canvas.width = window.innerWidth;
