@@ -68,3 +68,20 @@ header a{
   font-family: 'Courier New', Courier, monospace;
   text-decoration: none;
 }
+
+header a:hover{
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration: underline;
+}
+
+header h1:hover{
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  text-decoration:line-through;
+}
+
+header {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
