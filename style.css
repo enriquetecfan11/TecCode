@@ -10,6 +10,20 @@ html {
   box-sizing: border-box;
 }
 
+.tabs {
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  color: white;
+}
+
+.tab {
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 1px solid grey;
+}
+
 /* Estilos para los editores y la vista previa en vivo */
 #app {
   display: grid;

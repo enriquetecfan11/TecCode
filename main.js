@@ -157,3 +157,20 @@ function createHtml({ html, css, js }) {
   `;
 }
 
+// Código nuevo para el manejo de las pestañas
+const tabs = document.querySelectorAll('.tab');
+const editors = document.querySelectorAll('.editor');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const targetEditor = document.querySelector(`#${tab.id.replace('-tab', '')}`);
+    
+    // Ocultar todos los editores
+    editors.forEach(editor => {
+      editor.style.display = 'none';
+    });
+
+    // Mostrar el editor seleccionado
+    targetEditor.style.display = 'block';
+  });
+});
