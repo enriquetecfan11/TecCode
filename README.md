@@ -1,7 +1,5 @@
 # TecCode - Editor de Código Estilo VS Code
 
-![TecCode Preview](https://your-image-url.com/preview.png)  
-
 TecCode es un editor de código ligero inspirado en Visual Studio Code, diseñado para ofrecer una experiencia similar en el navegador. Permite escribir y renderizar código en tiempo real con una interfaz moderna y optimizada.
 
 ## 🚀 Características
