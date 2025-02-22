@@ -4,41 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tec Code</title>
-  <!-- add favicon -->
-  <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
-  <style>
-    .editor {
-      width: 900px;
-      height: 300px;
-    }
-
-    .livepreview {
-      width: 900px;
-      height: 900px;
-    }
-  </style>
+  <title>TecCode Editor</title>
 </head>
 
 <body>
-  <header>
-    <h1>TecCode made by Enrique Rodriguez Vela</h1>
-    <a href="https://github.com/enriquetecfan11/TecCode">Github Project</a>
-  </header>
-  <main id="app">
-    <section class="tabs">
-      <div class="tab" id="html-tab">HTML</div>
-      <div class="tab" id="css-tab">CSS</div>
-      <div class="tab" id="js-tab">JS</div>
-    </section>
-    <section class="editors">
-      <div class="editor" id="html"></div>
-      <div class="editor" id="css"></div>
-      <div class="editor" id="js"></div>
-    </section>
-    <iframe class="livepreview" srcdoc=""></iframe>
-  </main>
-  <script type="module" src="/main.js"></script>
+  <div class="header">
+    <h1>Tec Code Editor</h1>
+  </div>
+  <div class="container">
+    <div class="editor-side">
+      <div class="tabs">
+        <button class="tab active" id="html-tab">HTML</button>
+        <button class="tab" id="css-tab">CSS</button>
+        <button class="tab" id="js-tab">JS</button>
+      </div>
+      <div class="editor-container">
+        <div id="html" class="editor active"></div>
+        <div id="css" class="editor"></div>
+        <div id="js" class="editor"></div>
+      </div>
+    </div>
+    <div class="preview-side">
+      <div class="preview-header">Preview</div>
+      <iframe id="preview"></iframe>
+    </div>
+  </div>
+  <script type="module" src="main.js"></script>
 </body>
 
 </html>

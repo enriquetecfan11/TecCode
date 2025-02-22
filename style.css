@@ -1,101 +1,113 @@
-/* Estilos generales */
-html, body, #app {
+* {
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Evita las barras de desplazamiento */
-  background-color: #1e1e1e;
+  box-sizing: border-box;
 }
 
-html {
-  box-sizing: border-box;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  background: #252526;
+  color: #fff;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: center;
+  /* Changed from space-between to center */
+  align-items: center;
+}
+
+h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  /* Added to center the text */
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  background: #1e1e1e;
+}
+
+.editor-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 50%;
+}
+
+.preview-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #333;
 }
 
 .tabs {
   display: flex;
-  flex-direction: column;
-  background-color: #333;
-  color: white;
+  background: #252526;
+  padding: 8px;
 }
 
 .tab {
-  padding: 10px;
-  cursor: pointer;
-  text-align: center;
-  border-bottom: 1px solid grey;
-}
-
-/* Estilos para los editores y la vista previa en vivo */
-#app {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  width: 100vw;
-}
-
-.editor, .livepreview {
-  position: relative;
-  background-color: black;
-}
-
-.editor::after {
-  content: '';
-  position: absolute;
-  background-repeat: no-repeat;
-  right: 16px;
-  bottom: 16px;
-  width: 48px;
-  height: 48px;
-}
-
-#html::after {
-  background-image: url('assets/html5.svg');
-}
-
-#css::after {
-  background-image: url('assets/css3.svg');
-}
-
-#js::after {
-  background-image: url('assets/js.svg');
-}
-
-/* Estilos para el iframe */
-iframe {
+  padding: 8px 16px;
+  background: none;
   border: none;
-}
-
-/* Estilos para el encabezado */
-header {
-  background-color: #333;
   color: #fff;
-  padding: 5px;
-  text-align: center;
+  cursor: pointer;
+  margin-right: 4px;
 }
 
-header h1 {
-  font-size: 20px;
-  font-family: 'Courier New', Courier, monospace;
+.tab.active {
+  background: #1e1e1e;
+  border-bottom: 2px solid #007acc;
 }
-header a{
+
+.editor-container {
+  flex: 1;
+  position: relative;
+  height: calc(100vh - 40px);
+  overflow: hidden;
+}
+
+.editor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.editor.active {
+  display: block;
+}
+
+/* Estilos específicos de Monaco */
+.monaco-editor {
+  padding: 8px;
+}
+
+.monaco-editor .margin {
+  background-color: #1e1e1e !important;
+}
+
+.monaco-editor .minimap {
+  opacity: 0.6;
+}
+
+.preview-header {
+  padding: 8px 16px;
+  background: #252526;
   color: #fff;
-  font-size: 12px;
-  font-family: 'Courier New', Courier, monospace;
-  text-decoration: none;
 }
 
-header a:hover{
-  color: #fff;
-  font-size: 12px;
-  font-family: 'Courier New', Courier, monospace;
-  text-decoration: underline;
-}
-
-header h1:hover{
-  color: #fff;
-  font-family: 'Courier New', Courier, monospace;
-  text-decoration:line-through;
-}
-
-header {
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+#preview {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: white;
 }
