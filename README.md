@@ -1,20 +1,39 @@
-<!-- <a href="https://monacoeditor.netlify.app">Demo</a> -->
+# TecCode - Editor de Código Estilo VS Code
 
-</div>
+![TecCode Preview](https://your-image-url.com/preview.png)  
 
-<h1 align="center">TecCode</h1>
+TecCode es un editor de código ligero inspirado en Visual Studio Code, diseñado para ofrecer una experiencia similar en el navegador. Permite escribir y renderizar código en tiempo real con una interfaz moderna y optimizada.
 
-<p align="center">
-  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{YOUR_GITHUB_USERNAME}}/monaco-editor?color=56BEB8">
+## 🚀 Características
+✅ Interfaz basada en el diseño de VS Code.  
+✅ Editor de código con resaltado de sintaxis (Monaco/CodeMirror).  
+✅ Renderizado en vivo del código en HTML, CSS y JavaScript.  
+✅ Explorador de archivos básico.  
+✅ Diseño responsive y adaptable.
 
-## 🎯 About
+## 🛠 Tecnologías Utilizadas
+- HTML, CSS y JavaScript
+- CodeMirror o Monaco Editor
+- Grid y Flexbox para el diseño
 
-My own code editor for simple web pages
+## 📥 Instalación
+Para usar TecCode en tu proyecto, sigue estos pasos:
+```bash
+# Clonar el repositorio
+$ git clone https://github.com/enriquetecfan11/TecCode.git
+$ cd TecCode
 
-## ✨ Features
+# Abre el archivo index.html en tu navegador
+```
 
-🚧 Working On 
+## 🎯 Uso
+1. Escribe tu código en el editor de la izquierda.
+2. Visualiza el resultado en tiempo real en el panel derecho.
+3. Explora archivos y gestiona tu código como en VS Code.
 
-Made with ❤️ by Enrique Rodriguez Vela
+## 📌 Roadmap
+- [ ] Modo oscuro/claro
 
-&#xa0;
+---
+
+✨ Desarrollado con ❤️ por [@enriquetecfan11](https://github.com/enriquetecfan11).
